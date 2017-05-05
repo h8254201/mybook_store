@@ -32,7 +32,10 @@ class BooksController < ApplicationController
       @book = Book.find_by(id: params[:id])
       @book.destroy if @book
       redirect_to books_path, notice: "書本資料已刪除!"
-    end
+  end
+  def show
+    @book = Book.find_by(id: params[:id])
+  end
   private
     def book_params
       params.require(:book).permit(:bookname, :introduction, :authorname, :price)
